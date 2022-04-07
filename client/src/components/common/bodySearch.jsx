@@ -13,9 +13,9 @@ const BodySearch = (params) => {
         fakeApi.fetchAll().then((res) => setGoodsState(res));
     }, []);
     const handleClickCard = (e) => {
-        console.log(history);
         history.push(`/goods/${e.target.id}`);
     };
+
     return (
         <div className="shadow rounded w-200 mt-3 mb-3 h-100 block">
              <Container className="fluid">
@@ -29,7 +29,10 @@ const BodySearch = (params) => {
                                 <PriceSort />
                             </Col>
                             <Col>
-                                <GoodsList props={goodsState} onClickGoodCard={handleClickCard} />
+                                <GoodsList
+                                    goods={goodsState}
+                                    onClickGoodCard={handleClickCard}
+                                />
                             </Col>
                         </Row>
                     </Col>

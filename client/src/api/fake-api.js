@@ -47,8 +47,14 @@ const goods = [
     }
 ];
 
+const basket = [];
+
 if (!localStorage.getItem("goods")) {
     localStorage.setItem("goods", JSON.stringify(goods));
+}
+
+if (!localStorage.getItem("basket")) {
+    localStorage.setItem("basket", JSON.stringify(basket));
 }
 
 const fetchAll = () =>

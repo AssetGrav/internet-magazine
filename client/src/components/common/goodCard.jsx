@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 const GoodCard = ({ good }) => {
     const history = useHistory();
     const handleClickBuy = () => {
-        console.log("click");
         history.push("/basket");
     };
     return (
