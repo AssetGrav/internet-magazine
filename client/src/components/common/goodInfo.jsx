@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import { PropTypes } from "prop-types";
 import TextField from "./textfild";
-import { localBasket } from "./ui/localStorage";
+import { addToLocalBasket, localBasket } from "./ui/localStorage";
 
 const GoodInfo = ({ good, onClickGoodCard }) => {
     const [basket, setBasket] = useState(localBasket);
@@ -46,9 +46,9 @@ const GoodInfo = ({ good, onClickGoodCard }) => {
     };
 
     useEffect(() => {
-        localStorage.setItem("basket", JSON.stringify(basket));
-        setData(1);
+        addToLocalBasket(basket);
     }, [basket]);
+
     if (data) {
         return (
             <div className="shadow rounded w-200 mt-3 mb-3">
@@ -77,7 +77,7 @@ const GoodInfo = ({ good, onClickGoodCard }) => {
                                     <TextField
                                         type="quantaty"
                                         name="baskQuantaty"
-                                        value={data.baskQuant}
+                                        value={data.baskQuantaty === undefined ? 1 : data.baskQuantaty}
                                         onChange={onChangeQuantaty}
                                     />
                                 </Col>
